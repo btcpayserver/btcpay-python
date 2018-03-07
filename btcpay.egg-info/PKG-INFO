@@ -1,12 +1,13 @@
 Metadata-Version: 1.1
 Name: btcpay
-Version: 1.0.0
+Version: 1.0.1
 Summary: Accept bitcoin with BTCPay
 Home-page: https://github.com/joeblackwaslike/btcpay-python
 Author: Joe Black
 Author-email: me@joeblack.nyc
 License: Apache 2.0
-Download-URL: https://github.com/joeblackwaslike/btcpay-python/tarball/v1.0.0
+Download-URL: https://github.com/joeblackwaslike/btcpay-python/tarball/v1.0.1
+Description-Content-Type: UNKNOWN
 Description: UNKNOWN
 Keywords: bitcoin,payments,crypto
 Platform: UNKNOWN
