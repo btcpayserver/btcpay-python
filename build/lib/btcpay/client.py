@@ -55,9 +55,9 @@ class BTCPayClient:
         uri = self.host + path
         if payload:
             payload = json.dumps(payload)
-            r = self.s.post(uri, data=payload)
+            r = self.s.post(uri, headers=headers, data=payload)
         else:
-            r = self.s.get(uri)
+            r = self.s.get(uri, headers=headers)
         r.raise_for_status()
         return r.json()['data']
 
@@ -85,19 +85,10 @@ class BTCPayClient:
         if re.match(r'^\w{7,7}$', code) is None:
           raise ValueError("pairing code is not legal")
         payload = {'id': self.client_id, 'pairingCode': code}
-        data = self._unsigned_request('/tokens', payload)
-        data = data[0]
-        return {
-            data['facade']: data['token']
-        }
+        return self._unsigned_request('/tokens', payload)
 
     def __repr__(self):
         return '{}({})'.format(
             type(self).__name__,
             self.host
         )
-
-# from btcpay import BTCPayClient
-client = BTCPayClient(host=shop.gateway.client.uri, insecure=True, pem=shop.gateway.client.pem, tokens=shop.gateway.client.tokens)
-
-client = BTCPayClient(host=shop.gateway.client.uri, insecure=True, pem=shop.gateway.client.pem, tokens={'merchant': 'ET9rzVZUJLg9xnWo7pcjw32fPnqLj7KocfP3XyDptrCo'})

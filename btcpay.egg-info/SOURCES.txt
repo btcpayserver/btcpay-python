@@ -1,3 +1,5 @@
+README.md
+setup.py
 btcpay/__init__.py
 btcpay/client.py
 btcpay/crypto.py

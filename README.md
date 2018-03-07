@@ -1,5 +1,10 @@
 # btcpay-python
 
+## Install
+```shell
+pip3 install btcpay
+```
+
 
 ## Pairing
 * Generate and save private key:
