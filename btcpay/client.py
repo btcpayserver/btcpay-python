@@ -5,6 +5,7 @@ BTCPay API Client.
 
 import re
 import json
+from urllib.parse import urlencode
 
 import requests
 
@@ -32,12 +33,15 @@ class BTCPayClient:
             "X-Signature": crypto.sign(uri + payload, self.pem)
         }
 
-    def _signed_get_request(self, path, token=None):
+    def _signed_get_request(self, path, params=None, token=None):
         token = token or list(self.tokens.values())[0]
+        params = params or dict()
+        params['token'] = token
+
         uri = self.host + path
-        payload = "?token=%s" % token
+        payload = '?' + urlencode(params)
         headers = self._create_signed_headers(uri, payload)
-        r = self.s.get(uri + payload, headers=headers)
+        r = self.s.get(uri, params=params, headers=headers)
         r.raise_for_status()
         return r.json()['data']
 
@@ -61,11 +65,16 @@ class BTCPayClient:
         r.raise_for_status()
         return r.json()['data']
 
-    def get_rates(self):
-        return self._signed_get_request('/rates/')
+    def get_rates(self, crypto='BTC', store_id=None):
+        params = dict(
+            cryptoCode=crypto
+        )
+        if store_id:
+            params['storeID'] = store_id
+        return self._signed_get_request('/rates/', params=params)
 
-    def get_rate(self, currency):
-        rates = self.get_rates()
+    def get_rate(self, currency, crypto='BTC', store_id=None):
+        rates = self.get_rates(crypto=crypto, store_id=store_id)
         rate = [rate for rate in rates if rate['code'] == currency.upper()][0]
         return rate['rate']
 
@@ -96,8 +105,3 @@ class BTCPayClient:
             type(self).__name__,
             self.host
         )
-
-# from btcpay import BTCPayClient
-client = BTCPayClient(host=shop.gateway.client.uri, insecure=True, pem=shop.gateway.client.pem, tokens=shop.gateway.client.tokens)
-
-client = BTCPayClient(host=shop.gateway.client.uri, insecure=True, pem=shop.gateway.client.pem, tokens={'merchant': 'ET9rzVZUJLg9xnWo7pcjw32fPnqLj7KocfP3XyDptrCo'})
