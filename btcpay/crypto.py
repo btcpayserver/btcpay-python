@@ -6,6 +6,7 @@ These are various crytography related utility functions borrowed from:
 
 import binascii
 import hashlib
+import string
 
 from ecdsa import SigningKey, SECP256k1, VerifyingKey
 from ecdsa import util as ecdsaUtil
@@ -41,7 +42,7 @@ def sign(message, pem):
 
 
 def base58encode(hexastring):
-    chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+    chars = string.digits[1:] + string.ascii_uppercase + string.ascii_lowercase
     int_val = int(hexastring, 16)
     encoded = encode58('', int_val, chars)
     return encoded
