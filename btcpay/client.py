@@ -5,7 +5,6 @@ BTCPay API Client.
 
 import re
 import json
-from urllib.error import HTTPError
 from urllib.parse import urlencode
 
 import requests
