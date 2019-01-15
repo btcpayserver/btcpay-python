@@ -5,6 +5,7 @@ BTCPay API Client.
 
 import re
 import json
+from urllib.error import HTTPError
 from urllib.parse import urlencode
 
 import requests
@@ -52,7 +53,13 @@ class BTCPayClient:
         payload = json.dumps(payload)
         headers = self._create_signed_headers(uri, payload)
         r = self.s.post(uri, headers=headers, data=payload)
-        r.raise_for_status()
+        if not r.ok:
+            raise Exception(
+                'Response Code: ' +
+                str(r.status_code) + ' ' +
+                str(r.reason) +
+                str(r.text)
+            )
         return r.json()['data']
 
     def _unsigned_request(self, path, payload=None):

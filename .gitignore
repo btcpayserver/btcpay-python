@@ -2,3 +2,5 @@ dist/
 build/
 *.egg-info/
 __pycache__
+jeff.py
+*/venv/
