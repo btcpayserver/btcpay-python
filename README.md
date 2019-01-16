@@ -11,6 +11,7 @@ pip3 install btcpay
 ```python
 client = BTCPayClient.create_client(host='https://btcpay.example.com', code=<pairing-code>)
 ```
+* The client can be stored to persistent storage for later use. This could, for example, be accomplished by [pickling](https://docs.python.org/3.5/library/pickle.html) the client object and saving the pickled object to Redis, or alternatively saving as a PickleType in sqlalchemy.
 
 ## Creating a client the manual way (not necessary if you used the 'easy' method)
 * Generate and save private key:
