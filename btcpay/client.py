@@ -119,6 +119,13 @@ class BTCPayClient:
             data['facade']: data['token']
         }
 
+    @classmethod
+    def create_client(cls, code, host):
+        pem = crypto.generate_privkey()
+        client = BTCPayClient(host=host, pem=pem)
+        token = client.pair_client(code)
+        return BTCPayClient(host=host, pem=pem, tokens=token)
+
     def __repr__(self):
         return '{}({})'.format(
             type(self).__name__,
