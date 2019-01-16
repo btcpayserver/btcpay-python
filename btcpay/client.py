@@ -8,6 +8,7 @@ import json
 from urllib.parse import urlencode
 
 import requests
+from requests.exceptions import HTTPError
 
 from . import crypto
 
@@ -52,7 +53,25 @@ class BTCPayClient:
         payload = json.dumps(payload)
         headers = self._create_signed_headers(uri, payload)
         r = self.s.post(uri, headers=headers, data=payload)
-        r.raise_for_status()
+        if not r.ok:
+            if 400 <= r.status_code < 500:
+                http_error_msg = u'%s Client Error: \
+                        %s for url: %s | body: %s' % (
+                            r.status_code,
+                            r.reason,
+                            r.url,
+                            r.text
+                        )
+            elif 500 <= r.status_code < 600:
+                http_error_msg = u'%s Server Error: \
+                        %s for url: %s | body: %s' % (
+                            r.status_code,
+                            r.reason,
+                            r.url,
+                            r.text
+                        )
+            if http_error_msg:
+                raise HTTPError(http_error_msg, response=r)
         return r.json()['data']
 
     def _unsigned_request(self, path, payload=None):
