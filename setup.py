@@ -4,10 +4,8 @@ from setuptools import setup, find_packages
 setup(
     name="btcpay",
     packages=find_packages(),
-    version="1.0.4",
+    version="1.1.0",
     description="Accept bitcoin with BTCPay",
-    author="Joe Black",
-    author_email="me@joeblack.nyc",
     url="https://github.com/btcpayserver/btcpay-python",
     download_url="https://github.com/btcpayserver/btcpay-python/archive/v1.0.3.tar.gz",
     license='MIT',
