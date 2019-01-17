@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name="btcpay_python",
+    name="btcpay-python",
     packages=find_packages(),
     version="1.1.0",
     description="Accept bitcoin with BTCPay",
