@@ -2,13 +2,15 @@
 
 ## Install
 ```shell
-pip3 install btcpay
+pip3 install btcpay-python
 ```
 
 ## The "easy method" to create a new BTCPay client
 * On BTCPay server > shop > access tokens > create new token, copy pairing code.
 * Then use that code in the below Python code:
 ```python
+from btcpay-python import BTCPayClient
+
 client = BTCPayClient.create_client(host='https://btcpay.example.com', code=<pairing-code>)
 ```
 
@@ -16,12 +18,12 @@ client = BTCPayClient.create_client(host='https://btcpay.example.com', code=<pai
 ## Creating a client the manual way (not necessary if you used the 'easy' method)
 * Generate and save private key:
 ```python
-import btcpay.crypto
+import btcpay-python.crypto
 privkey = btcpay.crypto.generate_privkey()
 ```
 * Create client:
 ```python
-from btcpay import BTCPayClient
+from btcpay-python import BTCPayClient
 client = BTCPayClient(host='http://hostname', pem=privkey)
 ```
 * On BTCPay server > shop > access tokens > create new token, copy pairing code:
