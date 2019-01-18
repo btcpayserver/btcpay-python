@@ -4,6 +4,12 @@
 ```shell
 pip3 install btcpay-python
 ```
+If you were a user of the prior unofficial client library for Python, you would need to uninstall it first:
+```shell
+pip3 uninstall btcpay
+pip3 install btcpay-python
+```
+This library is fully backward compatibile with the prior unofficial library; no code changes are needed.
 
 ## The "easy method" to create a new BTCPay client
 * On BTCPay server > shop > access tokens > create new token, copy pairing code.
