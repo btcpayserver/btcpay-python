@@ -48,7 +48,7 @@ client.get_invoice(<invoice-id>)
 
 ## Storing the client object for later
 
-You do not need to store any tokens or private keys. Simply `pickle` the client object and save it to your persistent storage method (Redis, SQLAlchemy, etc). Pull it from persistent storage later, unpickle it, and perform any of the methods above on it which you may need. You must save the object to persistent storage if you wish for the pairing to persist beyond being stored in memory.
+You do not need to store any tokens or private keys. Simply `pickle` the client object and save it to your persistent storage method (Redis, SQLAlchemy, Mongo, etc). Do not use `shelve` for storage. Pull it from persistent storage later, unpickle it, and perform any of the methods above on it which you may need. You must save the object to persistent storage if you wish for the pairing to persist beyond being stored in memory.
 
 
 ## Creating a client the manual way (not necessary if you used the 'easy' method above)
