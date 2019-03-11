@@ -22,26 +22,26 @@ client = BTCPayClient.create_client(host='https://btcpay.example.com', code=<pai
 
 ## Uses for the client object you just created above
 
-# Get rates
+### Get rates
 ```python
 client.get_rates()
 ```
 
 
-# Create specific rate
+### Create specific rate
 ```python
 client.get_rate('USD')
 ```
 
 
-# Create invoice
+### Create invoice
 See bitpay api documentation: https://bitpay.com/api#resource-Invoices
 ```python
 client.create_invoice({"price": 20, "currency": "USD"})
 ```
 
 
-# Get invoice
+### Get invoice
 ```python
 client.get_invoice(<invoice-id>)
 ```
