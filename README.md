@@ -20,8 +20,38 @@ from btcpay import BTCPayClient
 client = BTCPayClient.create_client(host='https://btcpay.example.com', code=<pairing-code>)
 ```
 
+## Uses for the client object you just created above
 
-## Creating a client the manual way (not necessary if you used the 'easy' method)
+# Get rates
+```python
+client.get_rates()
+```
+
+
+# Create specific rate
+```python
+client.get_rate('USD')
+```
+
+
+# Create invoice
+See bitpay api documentation: https://bitpay.com/api#resource-Invoices
+```python
+client.create_invoice({"price": 20, "currency": "USD"})
+```
+
+
+# Get invoice
+```python
+client.get_invoice(<invoice-id>)
+```
+
+## Storing the client object for later
+
+You do not need to store any tokens or private keys. Simply `pickle` the client object and save it to your persistent storage method (Redis, SQLAlchemy, etc). Pull it from persistent storage later, unpickle it, and perform any of the methods on it which you may need.
+
+
+## Creating a client the manual way (not necessary if you used the 'easy' method above)
 * Generate and save private key:
 ```python
 import btcpay.crypto
@@ -45,29 +75,4 @@ client = BTCPayClient(
     pem=privkey,
     tokens={'merchant': "xdr9vw3v5wc0w90859v45"}
 )
-```
-
-
-## Get rates
-```python
-client.get_rates()
-```
-
-
-## Create specific rate
-```python
-client.get_rate('USD')
-```
-
-
-## Create invoice
-See bitpay api documentation: https://bitpay.com/api#resource-Invoices
-```python
-client.create_invoice({"price": 20, "currency": "USD"})
-```
-
-
-## Get invoice
-```python
-client.get_invoice(<invoice-id>)
 ```
