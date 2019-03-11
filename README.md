@@ -12,7 +12,7 @@ pip3 install btcpay-python
 This library is fully backward compatibile with the prior unofficial library; no code changes are needed.
 
 ## Pairing to your server:
-To connect your website with your BTCPay server, you must first pair your application to BTCPay. To do this you will need to generate an access token as follows:
+To connect your website with your BTCPay server, you must first pair your application to BTCPay. To do this you will need to generate a pairing code as follows:
 
 1. On your BTCPay server, browse to Stores > Store settings > Access tokens > Create new token
 2. Fill in the form:
@@ -23,7 +23,7 @@ Facade: 'merchant'
 ```
 3. Click save and then copy the 7 digit pairing code from the success page
 
-After you have the access token, you are ready to use the client library to create a client object.
+After you have the pairing code, you are ready to use the client library to create a client object.
 
 ## The "easy method" to create a new BTCPay client
 Use the pairing code obtained above as follows:
