@@ -58,11 +58,15 @@ client.get_rate('USD')
 
 ## Storing the client object for later
 
-You do not need to store any tokens or private keys. Simply `pickle` the client object and save it to your persistent storage method (Redis, SQLAlchemy/SQLite/PostgreSql, MongoDB, etc). Do not use `shelve` or a similar static file for storage, as concurrent access could corrupt the static file. Pull the client object from persistent storage later, unpickle it, and perform any of the methods above on it which you may need. You must save the object to persistent storage if you wish for the pairing to persist beyond the limited time your code is in memory.
+After you create a client object, you must save the object to persistent storage if you wish for the pairing to persist beyond the limited time your code is in memory.
+
+You do not need to store any tokens or private keys. Simply `pickle` the client object and save it to your persistent storage method (Redis, SQLAlchemy/SQLite/PostgreSql, MongoDB, etc). I suggest not using `shelve` or a similar static file for storage, as concurrent access could corrupt the static file.
+
+When you need to call a method on the client object later, pull the client object from persistent storage, unpickle it, and perform any of the methods above on it which you may need.
 
 ## Creating a client the manual way (not necessary if you used the 'easy' method above)
 
-If you prefer to create the client object manually (as was the only way in the prior unofficial library), you can do so as follows. This is unnecessary for most developers and is preserved primarily to maintain backward compatibility with both the prior unofficial library and also compatibility with Bitpay.
+If you prefer to create the client object manually (as was the only way in the prior unofficial library), you can do so as follows. This is unnecessary for most developers and is preserved primarily to maintain backward compatibility with both the prior unofficial library and Bitpay.
 
 * Generate and save private key:
 ```python
