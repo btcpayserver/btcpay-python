@@ -38,12 +38,12 @@ You'll probably only ever need the `create_invoice` and `get_invoice` methods, b
 ### Create invoice
 See bitpay api documentation: https://bitpay.com/api#resource-Invoices
 ```python
-client.create_invoice({"price": 20, "currency": "USD"})
+new_invoice = client.create_invoice({"price": 20, "currency": "USD"})
 ```
 
 ### Get invoice
 ```python
-client.get_invoice(<invoice-id>)
+fetched_invoice = client.get_invoice(<invoice-id>)
 ```
 
 ### Get rates
