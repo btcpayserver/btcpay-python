@@ -16,9 +16,11 @@ To connect your website with your BTCPay server, you must first pair your applic
 
 1. On your BTCPay server, browse to Stores > Store settings > Access tokens > Create new token
 2. Fill in the form:
-    Label: <anything that will help you remember what this pairing is used for>
-    Public key: leave blank
-    Facade: 'merchant'
+```
+Label: <any string will help you remember what this pairing is used for>
+Public key: leave blank
+Facade: 'merchant'
+```
 3. Click save and then copy the 7 digit pairing code from the success page
 
 After you have the access token, you are ready to use the client library to create a client object.
