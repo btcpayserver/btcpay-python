@@ -70,7 +70,7 @@ You do not need to store any tokens or private keys. Simply `pickle` the client 
 
 When you need to call a method on the client object later, pull the client object from persistent storage, unpickle it, and perform any of the methods above on it which you may need.
 
-Note that the pairing code obtained from BTCPay may only be used once to create one client object. It is then forever burned. You may not recreate a client object by re-using the pairing code. For later use, the client object must either be saved in persistent storage (the easy way) or recreated using the pem and merchant token (the hard way).
+Note that the pairing code obtained from BTCPay may only be used once to create one client object. It is then forever burned. You may not recreate a client object by re-using the pairing code. For later use, the client object must either be retrieved from persistent storage (the easy way) or recreated using the pem and merchant token (the hard way).
 
 ## Creating a client the manual way (not necessary if you used the 'easy' method above)
 
