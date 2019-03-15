@@ -70,6 +70,8 @@ You do not need to store any tokens or private keys. Simply `pickle` the client 
 
 When you need to call a method on the client object later, pull the client object from persistent storage, unpickle it, and perform any of the methods above on it which you may need.
 
+Note that the pairing code obtained from BTCPay may only be used once to create one client object. It is then forever burned. You may not recreate a client object by re-using the pairing code.
+
 ## Creating a client the manual way (not necessary if you used the 'easy' method above)
 
 If you prefer to create the client object manually (as was the only way in the prior unofficial library), you can do so as follows. This is unnecessary for most developers and is preserved primarily to maintain backward compatibility with both the prior unofficial library and Bitpay.
