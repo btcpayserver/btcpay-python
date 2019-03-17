@@ -51,7 +51,7 @@ new_invoice = client.create_invoice({"price": 20, "currency": "USD"})
 ```python
 fetched_invoice = client.get_invoice(<invoice-id>)
 ```
-The `fetched_invoixe` above will be a dictionary of all invoice data from the Bitpay API. For instance, you can check the payment status with `fetched_invoice['status']`.
+The `fetched_invoice` above will be a dictionary of all invoice data from the Bitpay API. For instance, you can check the payment status with `fetched_invoice['status']`.
 
 ### Get rates
 ```python
