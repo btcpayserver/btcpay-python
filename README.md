@@ -58,7 +58,7 @@ The `fetched_invoice` above will be a dictionary of all invoice data from the Bi
 client.get_rates()
 ```
 
-### pecific rate
+### Get specific rate
 ```python
 client.get_rate('USD')
 ```
