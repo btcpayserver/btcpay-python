@@ -17,7 +17,7 @@ To connect your website with your BTCPay server, you must first pair your applic
 1. On your BTCPay server, browse to Stores > Store settings > Access tokens > Create new token
 2. Fill in the form:
 ```
-Label: <any string will help you remember what this pairing is used for>
+Label: <any string that will help you remember what this pairing is used for>
 Public key: leave blank
 Facade: 'merchant'
 ```
@@ -42,7 +42,7 @@ The `get_invoice` method is very important. When BTCPay sends a payment notifica
 Instead, take the `invoiceId` from the payment notification, and use it to securely fetch the paid invoice data from BTCPay using `get_invoice`.
 
 ### Create invoice
-See bitpay api documentation for a full listing of key-value pairs that can be passed to invoice creation: https://bitpay.com/api#resource-Invoices
+See the Bitpay API documentation for a full listing of key-value pairs that can be passed to invoice creation: https://bitpay.com/api#resource-Invoices
 ```python
 new_invoice = client.create_invoice({"price": 20, "currency": "USD"})
 ```
