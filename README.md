@@ -35,7 +35,7 @@ client = BTCPayClient.create_client(host='https://btcpay.example.com', code=<pai
 
 ## Uses for the client object you just created above
 
-You'll probably only ever need the `create_invoice` and `get_invoice` methods, but the client object also has other methods, such as those for getting and setting custom rate information.
+You'll probably only ever need the `create_invoice` and `get_invoice` methods, but the client object also has other methods, such as those for getting rate information.
 
 The `get_invoice` method is very important. When BTCPay sends a payment notification (described [here in Bitpay's API docs](https://bitpay.com/docs/create-invoice)), it is unsigned and insecure. Being unsigned and insecure is necessary to maintain compatibility with software originally designed for Bitpay. You therefore cannot rely upon the data transmitted in the payment notification.
 
@@ -58,7 +58,7 @@ The `fetched_invoice` above will be a dictionary of all invoice data from the Bi
 client.get_rates()
 ```
 
-### Create specific rate
+### pecific rate
 ```python
 client.get_rate('USD')
 ```
