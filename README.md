@@ -9,7 +9,7 @@ If you were a user of the prior unofficial client library for Python, you would 
 pip3 uninstall btcpay
 pip3 install btcpay-python
 ```
-This library is fully backward compatibile with the prior unofficial library; no code changes are needed.
+This library is fully backward compatible with the prior unofficial library; no code changes are needed.
 
 ## Pairing to your server:
 To connect your website with your BTCPay server, you must first pair your application to BTCPay. To do this you will need to generate a pairing code as follows:
