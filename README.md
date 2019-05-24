@@ -37,7 +37,7 @@ client = BTCPayClient.create_client(host='https://btcpay.example.com', code=<pai
 
 You'll probably only ever need the `create_invoice` and `get_invoice` methods, but the client object also has other methods, such as those for getting rate information.
 
-Be sure to fully set up your store (including a derivation scheme in your store settings) otherwise these methods will fail.
+**Be sure to fully set up your store (including a derivation scheme in your store settings) otherwise these methods will fail.**
 
 The `get_invoice` method is very important. When BTCPay sends a payment notification (described [here in Bitpay's API docs](https://bitpay.com/docs/create-invoice)), it is unsigned and insecure. Being unsigned and insecure is necessary to maintain compatibility with software originally designed for Bitpay. You therefore cannot rely upon the data transmitted in the payment notification.
 
