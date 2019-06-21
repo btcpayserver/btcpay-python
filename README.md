@@ -33,6 +33,8 @@ from btcpay import BTCPayClient
 client = BTCPayClient.create_client(host='https://btcpay.example.com', code=<pairing-code>)
 ```
 
+**NOTE THAT PAIRING CODES WORK ONLY ONCE.** This is because you only ever need to pair once. See the section later in this document regarding how to save a client object for later after pairing. 
+
 ## Uses for the client object you just created above
 
 You'll probably only ever need the `create_invoice` and `get_invoice` methods, but the client object also has other methods, such as those for getting rate information.
