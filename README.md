@@ -57,6 +57,13 @@ fetched_invoice = client.get_invoice(<invoice-id>)
 ```
 The `fetched_invoice` above will be a dictionary of all invoice data from the Bitpay API. For instance, you can check the payment status with `fetched_invoice['status']`.
 
+### Get a list of invoices matching certain parameters
+
+```python
+invoice_list = client.get_invoices(status='confirmed')
+```
+You can search by `status`, `order_id`, `date_start`, `date_end`, etc. See the method for a full list of parameters that can be passed to the method.
+
 ### Get rates
 ```python
 client.get_rates()
