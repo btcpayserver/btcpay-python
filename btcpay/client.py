@@ -109,6 +109,24 @@ class BTCPayClient:
     def get_invoice(self, invoice_id, token=None):
         return self._signed_get_request('/invoices/' + invoice_id, token=token)
 
+    def get_invoices(self, status=None, order_id=None, item_code=None, date_start=None, date_end=None, limit=None, offset=None, token=None):
+        params = dict()
+        if status is not None:
+            params['status'] = status
+        if order_id is not None:
+            params['orderId'] = order_id
+        if item_code is not None:
+            params['itemCode'] = item_code
+        if date_start is not None:
+            params['dateStart'] = date_start
+        if date_end is not None:
+            params['dateEnd'] = date_end
+        if limit is not None:
+            params['limit'] = limit
+        if offset is not None:
+            params['offset'] = offset
+        return self._signed_get_request('/invoices', params=params, token=token)
+
     def pair_client(self, code):
         if re.match(r'^\w{7,7}$', code) is None:
           raise ValueError("pairing code is not legal")
