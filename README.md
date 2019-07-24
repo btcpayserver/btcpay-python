@@ -62,7 +62,7 @@ The `fetched_invoice` above will be a dictionary of all invoice data from the Bi
 ```python
 invoice_list = client.get_invoices(status='confirmed')
 ```
-You can search by `status`, `order_id`, `date_start`, `date_end`, etc. See the method for a full list of parameters that can be passed to the method.
+You can search by `status`, `order_id`, `date_start`, `date_end`, etc. See the method for a full list of parameters that can be passed to the method. The method returns a list of dictionaries, with each dictionary containing the invoice data for each matching invoice.
 
 ### Get rates
 ```python
