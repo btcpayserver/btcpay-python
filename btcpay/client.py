@@ -144,6 +144,7 @@ class BTCPayClient:
         token = client.pair_client(code)
         return BTCPayClient(host=host, pem=pem, tokens=token)
 
+    @classmethod
     def create_tor_client(cls, code, host, proxy='socks5://127.0.0.1:9050'):
         """ Useful for .onion services, the `proxy` input assumes the default
         proxy header
