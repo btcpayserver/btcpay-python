@@ -98,8 +98,6 @@ class BTCPayClient:
         return rate['rate']
 
     def create_invoice(self, payload, token=None):
-        if re.match(r'^[A-Z]{3,3}$', payload['currency']) is None:
-            raise ValueError('Currency is invalid.')
         try:
             float(payload['price'])
         except ValueError as e:
