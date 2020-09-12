@@ -19,7 +19,6 @@ To connect your website with your BTCPay server, you must first pair your applic
 ```
 Label: <any string that will help you remember what this pairing is used for>
 Public key: leave blank
-Facade: 'merchant'
 ```
 3. Click save and then copy the 7 digit pairing code from the success page
 
@@ -56,6 +55,10 @@ new_invoice = client.create_invoice({"price": 20, "currency": "USD"})
 fetched_invoice = client.get_invoice(<invoice-id>)
 ```
 The `fetched_invoice` above will be a dictionary of all invoice data from the Bitpay API. For instance, you can check the payment status with `fetched_invoice['status']`.
+
+This `get_invoice` method is very important. When BTCPay sends a payment notification (described [here in Bitpay's API docs](https://bitpay.com/docs/create-invoice)), it is unsigned and insecure. Being unsigned and insecure is necessary to maintain compatibility with software originally designed for Bitpay. You therefore cannot rely upon the data transmitted in the payment notification.
+
+Instead, take the `invoiceId` from the payment notification, and use it to securely fetch the paid invoice data from BTCPay using the `get_invoice` method above.
 
 ### Get a list of invoices matching certain parameters
 
