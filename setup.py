@@ -4,10 +4,10 @@ from setuptools import setup, find_packages
 setup(
     name="btcpay-python",
     packages=find_packages(),
-    version="1.2.1",
+    version="1.3.0",
     description="Accept bitcoin with BTCPay",
     url="https://github.com/btcpayserver/btcpay-python",
-    download_url="https://github.com/btcpayserver/btcpay-python/archive/v1.2.1.tar.gz",
+    download_url="https://github.com/btcpayserver/btcpay-python/archive/v1.3.0.tar.gz",
     license='MIT',
     keywords=["bitcoin", "payments", "crypto"],
     install_requires=[
