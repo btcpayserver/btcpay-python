@@ -11,6 +11,40 @@ pip3 install btcpay-python
 ```
 This library is fully backward compatible with the prior unofficial library; no code changes are needed.
 
+## Notes on Python unable to find **ripemd160**
+Most likely your system is using an updated version of OpenSSL(v3) in which old crypto functions has been dissabled.
+To enable old crypto functions and riemd160, you have to edit your configuration.
+
+Find your OpenSSL version
+```
+openssl version
+```
+
+Find your OpenSSL config dir:
+```
+openssl version -d
+```
+
+Add/modify your ```openssl.cnf``` as follows:
+<pre>
+openssl_conf = openssl_init
+
+[openssl_init]
+providers = provider_sect
+
+[provider_sect]
+default = default_sect
+legacy = legacy_sect
+
+[default_sect]
+activate = 1
+
+[legacy_sect]
+activate = 1
+</pre>
+
+A github discussion on this topic: https://github.com/openssl/openssl/issues/16994
+
 ## Pairing to your server:
 To connect your website with your BTCPay server, you must first pair your application to BTCPay. To do this you will need to generate a pairing code as follows:
 
