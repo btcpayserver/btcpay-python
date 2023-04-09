@@ -4,7 +4,7 @@
 ```shell
 pip3 install btcpay-python
 ```
-If you were a user of the prior unofficial client library for Python, you would need to uninstall it first:
+If you were a user of the prior unofficial client library for Python, you would need to uninstall `btcpay` first and install `btcpay-python`:
 ```shell
 pip3 uninstall btcpay
 pip3 install btcpay-python
